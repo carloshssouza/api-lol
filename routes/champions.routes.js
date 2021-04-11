@@ -15,4 +15,14 @@ routes.get("/champions/id/:id", getChampionsById);
 
 routes.get("/champions/name/:name", getChampionsByName);
 
+/**
+ * @swagger
+ * /champions:
+ *  get:
+ *    description: Get All Champions
+ *    responses:
+ *      '200':
+ *        description: Succesfully
+ */
+
 export default routes;
