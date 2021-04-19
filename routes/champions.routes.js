@@ -1,20 +1,17 @@
 import express from "express";
 import championsController from "../controllers/champions.controller.js";
 
-const {
-  getChampions,
-  getChampionsByName,
-  getChampionsById,
-} = championsController;
+const { getChampions, checkRequest } = championsController;
 
 const routes = express.Router();
 
+routes.get("/", (req, res) => {
+  return res.send(
+    '<h1>Acess the <a href="http://localhost:8080/api-docs">URL<a/>'
+  );
+});
+
 routes.get("/champions", getChampions);
-
-routes.get("/champions/id/:id", getChampionsById);
-
-routes.get("/champions/name/:name", getChampionsByName);
-
 /**
  * @swagger
  * /champions:
@@ -24,5 +21,7 @@ routes.get("/champions/name/:name", getChampionsByName);
  *      '200':
  *        description: Succesfully
  */
+
+routes.get("/champions/:data", checkRequest);
 
 export default routes;
